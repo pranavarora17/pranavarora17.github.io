@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pranav Arora — Backend Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+<!-- CANVAS BACKGROUND -->
+<canvas id="bgCanvas"></canvas>
+<canvas id="orbCanvas"></canvas>
+
+<!-- OVERLAYS -->
+<div class="scanlines"></div>
+<div class="vignette"></div>
+<div id="cursor"><div class="ch"></div><div class="cv"></div><div class="cc"></div></div>
+<div id="muzzle-flash"></div>
+
+<!-- SOUND TOGGLE -->
+<button id="soundToggle" class="sound-btn" title="Toggle Sound">🔊</button>
+
+<!-- ═══════════ LOADER ═══════════ -->
+<div id="loader">
+  <canvas id="loaderCanvas"></canvas>
+  <div class="loader-content">
+    <div class="loader-logo">P<span>.</span></div>
+    <div class="loader-subtitle">BACKEND DEVELOPER</div>
+    <div class="loader-bar-wrap"><div id="loaderBar" class="loader-bar"></div><span id="loaderPct" class="loader-pct">0%</span></div>
+    <div id="loaderLog" class="loader-log"></div>
+  </div>
+</div>
+
+<!-- ═══════════ NAV ═══════════ -->
+<nav id="nav">
+  <div class="nav-left">
+    <div class="nav-logo">PRANAV<span class="acc">_</span>ARORA</div>
+    <div class="nav-sub mono">BACKEND DEVELOPER · SRMIST · GPA <span class="acc">9.05</span></div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#hero"       class="nl" data-snd="click"><span>01</span>HOME</a></li>
+      <li><a href="#skills"     class="nl" data-snd="click"><span>02</span>SKILLS</a></li>
+      <li><a href="#projects"   class="nl" data-snd="click"><span>03</span>PROJECTS</a></li>
+      <li><a href="#timeline"   class="nl" data-snd="click"><span>04</span>JOURNEY</a></li>
+      <li><a href="#playground" class="nl" data-snd="click"><span>05</span>GAME</a></li>
+      <li><a href="#about-me"   class="nl" data-snd="click"><span>06</span>ABOUT</a></li>
+      <li><a href="#experience" class="nl" data-snd="click"><span>07</span>XP</a></li>
+      <li><a href="#contact"    class="nl" data-snd="click"><span>08</span>CONTACT</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="ping-wrap"><span class="ping-dot"></span>ONLINE</div>
+    <div id="navClock" class="mono nav-clock">00:00:00</div>
+  </div>
+</nav>
+
+<!-- ═══════════ HERO (full-screen) ═══════════ -->
+<section id="hero" class="fullscreen">
+  <div class="hero-wrap">
+    <div class="hero-left">
+      <div class="hero-eyebrow mono">Backend Developer · New Delhi / Remote</div>
+      <h1 class="hero-name">
+        <span class="hn-line">PRANAV</span>
+        <span class="hn-line accent-line">ARORA</span>
+      </h1>
+      <p class="hero-summary">2nd-year B.Tech CSE student at SRMIST with hands-on backend engineering experience. Specialising in Java, Spring Boot &amp; SQL — open to internships and full-time roles starting 2026.</p>
+      <div class="hero-role">
+        <span class="role-tag">BACKEND DEVELOPER</span>
+        <span class="role-tag">JAVA SPECIALIST</span>
+        <span class="role-tag">OPEN TO HIRE</span>
+      </div>
+      <p class="hero-bio">Designing, optimizing, and scaling backend systems with deep expertise in Java, Spring Boot &amp; SQL. I turn complex architecture into clean, performant code.</p>
+      <div class="hero-stats-row">
+        <div class="hs"><span class="hs-n">9.05</span><span class="hs-l">CGPA</span></div>
+        <div class="hs-div"></div>
+        <div class="hs"><span class="hs-n">3+</span><span class="hs-l">WINS</span></div>
+        <div class="hs-div"></div>
+        <div class="hs"><span class="hs-n">5+</span><span class="hs-l">CERTS</span></div>
+        <div class="hs-div"></div>
+        <div class="hs"><span class="hs-n">1</span><span class="hs-l">INTERNSHIP</span></div>
+      </div>
+      <div class="hero-cta">
+        <a href="#contact" class="btn-fire" data-snd="shot" id="heroCta">
+          <span class="btn-fire-inner">Get In Touch</span>
+        </a>
+        <a href="https://linkedin.com/in/pranavarora17" target="_blank" class="btn-resume" data-snd="click">
+          ⬇ Download Resume
+        </a>
+        <a href="#projects" class="btn-ghost" data-snd="click">View Work →</a>
+      </div>
+    </div>
+
+    <div class="hero-center">
+      <div class="profile-card">
+        <div class="profile-initials">PA</div>
+        <div class="profile-name">Pranav Arora</div>
+        <div class="profile-title mono">Backend Developer</div>
+        <div class="profile-divider"></div>
+        <div class="profile-stats">
+          <div class="ps-item"><span class="ps-val">9.05</span><span class="ps-lbl">CGPA</span></div>
+          <div class="ps-item"><span class="ps-val">3+</span><span class="ps-lbl">Wins</span></div>
+          <div class="ps-item"><span class="ps-val">5+</span><span class="ps-lbl">Certs</span></div>
+        </div>
+        <div class="profile-tags">
+          <span>Java</span><span>Spring Boot</span><span>MySQL</span><span>REST APIs</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="terminal" id="heroTerminal">
+        <div class="term-hd">
+          <div class="term-dots"><span class="r"></span><span class="y"></span><span class="g"></span></div>
+          <span class="mono term-ttl">pranav@portfolio:~$</span>
+          <span class="acc mono" style="font-size:.6rem">● LIVE</span>
+        </div>
+        <div id="termBody" class="term-body">
+          <div class="tl"><span class="tp acc">❯</span><span id="termCmd"></span><span id="termBl" class="tb">█</span></div>
+          <div id="termOut"></div>
+        </div>
+        <div class="term-ft mono">
+          <span>bash 5.2</span><span id="termClock">00:00:00</span><span>UTF-8</span>
+        </div>
+      </div>
+
+      <div class="hero-attr-panel">
+        <div class="hap-hd mono">// ATTRIBUTES</div>
+        <div class="hap-bar"><span>BACKEND</span><div class="hb"><div data-w="93"></div></div><span class="acc mono">93</span></div>
+        <div class="hap-bar"><span>DATABASE</span><div class="hb"><div data-w="90"></div></div><span class="acc mono">90</span></div>
+        <div class="hap-bar"><span>ALGORITHMS</span><div class="hb"><div data-w="85"></div></div><span class="acc mono">85</span></div>
+        <div class="hap-bar"><span>API DESIGN</span><div class="hb"><div data-w="92"></div></div><span class="acc mono">92</span></div>
+        <div class="hap-bar"><span>PROBLEM SOLVE</span><div class="hb"><div data-w="88"></div></div><span class="acc mono">88</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-ticker">
+    <div class="ht-track">
+      <span>JAVA</span><span class="ts">✦</span><span>SPRING BOOT</span><span class="ts">✦</span><span>MYSQL</span><span class="ts">✦</span><span>REST APIS</span><span class="ts">✦</span><span>HIBERNATE</span><span class="ts">✦</span><span>C++</span><span class="ts">✦</span><span>GIT</span><span class="ts">✦</span><span>DSA</span><span class="ts">✦</span><span>OOP</span><span class="ts">✦</span>
+      <span>JAVA</span><span class="ts">✦</span><span>SPRING BOOT</span><span class="ts">✦</span><span>MYSQL</span><span class="ts">✦</span><span>REST APIS</span><span class="ts">✦</span><span>HIBERNATE</span><span class="ts">✦</span><span>C++</span><span class="ts">✦</span><span>GIT</span><span class="ts">✦</span><span>DSA</span><span class="ts">✦</span><span>OOP</span><span class="ts">✦</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SKILLS (full-screen) ═══════════ -->
+<section id="skills" class="fullscreen">
+  <div class="sec-hd">
+    <span class="mono sec-num">02</span>
+    <h2 class="sec-title">SKILLS MATRIX</h2>
+    <div class="sec-line"></div>
+    <span class="mono sec-hint">CLICK TO INSPECT · HOVER TO TARGET</span>
+  </div>
+  <div class="skills-layout">
+    <div id="skillsGrid" class="skills-grid"></div>
+    <div class="inspector" id="inspector">
+      <div class="insp-hd mono">SKILL_INSPECTOR.EXE <span class="acc" id="inspStatus">IDLE</span></div>
+      <div id="inspIdle" class="insp-idle">
+        <div class="idle-reticle" id="idleReticle">
+          <div class="ret-h"></div><div class="ret-v"></div>
+          <div class="ret-tl"></div><div class="ret-tr"></div>
+          <div class="ret-bl"></div><div class="ret-br"></div>
+        </div>
+        <p class="mono">SELECT TARGET</p>
+      </div>
+      <div id="inspData" class="insp-data hidden">
+        <div class="id-row"><span class="ik mono">NAME</span><span class="iv" id="iName"></span></div>
+        <div class="id-row"><span class="ik mono">CATEGORY</span><span class="iv" id="iCat"></span></div>
+        <div class="id-row full">
+          <span class="ik mono">LEVEL</span>
+          <div class="id-bar-wrap"><div class="id-bar"><div id="iBarFill" class="id-bar-fill"></div></div><span class="acc mono tier-badge" id="iPct"></span></div>
+        </div>
+        <div class="id-row full"><span class="ik mono">DESC</span><p class="iv sm" id="iDesc"></p></div>
+        <div id="iTags" class="id-tags"></div>
+        <div class="insp-radar" id="inspRadar"></div>
+      </div>
+    </div>
+  </div>
+  <div class="ach-strip">
+    <div class="as-item"><span>🏆</span><div><b>HackPick</b><span class="acc">1ST PLACE</span></div></div>
+    <div class="as-div"></div>
+    <div class="as-item"><span>🥇</span><div><b>HackSummit</b><span class="acc">1ST PLACE</span></div></div>
+    <div class="as-div"></div>
+    <div class="as-item"><span>🥈</span><div><b>DevPlay</b><span style="color:#888">2ND PLACE</span></div></div>
+    <div class="as-div"></div>
+    <div class="as-item"><span>📜</span><div><b>Certifications</b><span class="acc">5 EARNED</span></div></div>
+    <div class="as-div"></div>
+    <div class="as-item"><span>⭐</span><div><b>CGPA</b><span class="acc">9.05 / 10</span></div></div>
+  </div>
+</section>
+
+<!-- ═══════════ PROJECTS (full-screen) ═══════════ -->
+<section id="projects" class="fullscreen">
+  <div class="sec-hd">
+    <span class="mono sec-num">03</span>
+    <h2 class="sec-title">PROJECT VAULT</h2>
+    <div class="sec-line"></div>
+    <a href="https://github.com/pranavarora17" target="_blank" class="sec-link mono" data-snd="click">GITHUB ↗</a>
+  </div>
+  <div class="proj-grid">
+    <div class="proj-card" data-snd="hover">
+      <div class="pc-glow"></div>
+      <div class="pc-hd">
+        <span class="mono pc-tag">FEATURED PROJECT</span>
+        <span class="acc mono">● ACTIVE</span>
+      </div>
+      <h3 class="pc-name">AdaptIQ</h3>
+      <span class="mono pc-date">Feb 2026 — Present</span>
+      <p class="pc-desc">An adaptive quiz platform supporting 50+ question types across 3 difficulty tiers. Uses a session-aware feedback loop that dynamically adjusts difficulty in real-time based on the user's performance curve — replacing static, linear rubrics with a smarter engine.</p>
+      <div class="pc-stack"><span>Java</span><span>Spring Boot</span><span>Adaptive Algorithm</span><span>Session State</span></div>
+      <a href="https://github.com/pranavarora17" target="_blank" class="pc-link mono" data-snd="shot">OPEN REPO ↗</a>
+    </div>
+    <div class="proj-card" data-snd="hover">
+      <div class="pc-glow"></div>
+      <div class="pc-hd">
+        <span class="mono pc-tag">FEATURED PROJECT</span>
+        <span class="acc mono">● ACTIVE</span>
+      </div>
+      <h3 class="pc-name">Deepfake Detector</h3>
+      <span class="mono pc-date">Dec 2025 — Present</span>
+      <p class="pc-desc">A Chrome extension that analyses live video streams frame-by-frame to detect AI-generated deepfakes in real time. Works across Zoom, Google Meet and other platforms — flagging anomalies in blink rate, micro-expressions and noise patterns with visual overlay feedback.</p>
+      <div class="pc-stack"><span>Chrome Extension</span><span>ML / Computer Vision</span><span>Real-time Analysis</span><span>Cybersecurity</span></div>
+      <a href="https://github.com/pranavarora17" target="_blank" class="pc-link mono" data-snd="shot">OPEN REPO ↗</a>
+    </div>
+  </div>
+  <div class="gh-panel">
+    <div class="gh-hd">
+      <span class="mono">// LIVE GITHUB FEED — <span class="acc">github.com/pranavarora17</span></span>
+      <div class="gh-dots"><span></span><span></span><span></span></div>
+    </div>
+    <div id="reposGrid" class="repos-grid">
+      <div class="repo-loader mono"><span class="spin">◌</span> FETCHING...</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ JOURNEY TIMELINE (full-screen) ═══════════ -->
+<section id="timeline" class="fullscreen">
+  <div class="sec-hd">
+    <span class="mono sec-num">04</span>
+    <h2 class="sec-title">JOURNEY MAP</h2>
+    <div class="sec-line"></div>
+    <span class="sec-hint mono">HOVER NODES TO EXPAND</span>
+  </div>
+  <div class="timeline-wrap">
+    <div class="tl-spine"></div>
+    <div class="tl-nodes" id="tlNodes">
+
+      <div class="tl-node" data-side="left" data-year="2024">
+        <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+        <div class="tl-card">
+          <div class="tl-year mono">2024</div>
+          <div class="tl-title">B.Tech CSE Begins</div>
+          <div class="tl-org mono">SRMIST</div>
+          <div class="tl-body">Started Computer Science at SRM Institute of Science and Technology. Immediately stood out — secured a 9.05 GPA in the first year.</div>
+          <div class="tl-tags"><span>Java</span><span>OOP</span><span>DSA</span></div>
+        </div>
+      </div>
+
+      <div class="tl-node" data-side="right" data-year="2025-H1">
+        <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+        <div class="tl-card">
+          <div class="tl-year mono">Jun–Jul 2025</div>
+          <div class="tl-title">SDE Intern — I4C</div>
+          <div class="tl-org mono">Indian Cyber Coordination Centre · New Delhi</div>
+          <div class="tl-body">Optimized MySQL queries, built UI components, tested Cyber Fraud Detection Models. Worked on real security-critical production systems.</div>
+          <div class="tl-tags"><span>MySQL</span><span>Git</span><span>Fraud Detection</span></div>
+        </div>
+      </div>
+
+      <div class="tl-node" data-side="left" data-year="2025-H2">
+        <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+        <div class="tl-card">
+          <div class="tl-year mono">Dec 2025</div>
+          <div class="tl-title">Deepfake Detector</div>
+          <div class="tl-org mono">Personal Project</div>
+          <div class="tl-body">Built a Chrome extension for real-time deepfake detection in live video calls — Zoom, Meet and beyond. Used computer vision to protect authenticity.</div>
+          <div class="tl-tags"><span>ML/CV</span><span>Chrome Ext</span><span>Real-time</span></div>
+        </div>
+      </div>
+
+      <div class="tl-node" data-side="right" data-year="2026-H1">
+        <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+        <div class="tl-card">
+          <div class="tl-year mono">Feb 2026</div>
+          <div class="tl-title">AdaptIQ Platform</div>
+          <div class="tl-org mono">Personal Project</div>
+          <div class="tl-body">Built an adaptive quiz platform with dynamic difficulty — a continuous session-aware feedback loop that adjusts in real-time to each user's learning arc.</div>
+          <div class="tl-tags"><span>Java</span><span>Spring Boot</span><span>Algorithms</span></div>
+        </div>
+      </div>
+
+      <div class="tl-node" data-side="left" data-year="2026-H2">
+        <div class="tl-dot active-dot"><div class="tl-dot-inner"></div></div>
+        <div class="tl-card tl-card-current">
+          <div class="tl-year mono acc">2026 — NOW</div>
+          <div class="tl-title">Hons. Financial Technology</div>
+          <div class="tl-org mono">SRMIST + Next Chapter</div>
+          <div class="tl-body">Pursuing Honours in FinTech while actively building, shipping, and looking for the next big opportunity. Open to internships and full-time roles.</div>
+          <div class="tl-tags"><span>FinTech</span><span>Open to Work</span><span class="acc-tag">● ACTIVE</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SHOOTER GAME (full-screen) ═══════════ -->
+<section id="playground" class="fullscreen">
+  <div class="sec-hd">
+    <span class="mono sec-num">05</span>
+    <h2 class="sec-title">BALL BLASTER</h2>
+    <div class="sec-line"></div>
+    <span class="sec-hint mono">CLICK TO SHOOT · DON'T LET THEM REACH YOU</span>
+  </div>
+  <p class="game-context">Built into this portfolio to demonstrate canvas-based game logic, real-time state management and collision detection — the same problem-solving patterns used in backend systems.</p>
+
+  <div class="game-wrap">
+    <!-- Score HUD -->
+    <div class="game-hud">
+      <div class="hud-cell">
+        <span class="hud-label mono">SCORE</span>
+        <span class="hud-val" id="gameScore">0</span>
+      </div>
+      <div class="hud-cell">
+        <span class="hud-label mono">LEVEL</span>
+        <span class="hud-val" id="gameLevel">1</span>
+      </div>
+      <div class="hud-cell">
+        <span class="hud-label mono">LIVES</span>
+        <span class="hud-val" id="gameLives">❤️❤️❤️</span>
+      </div>
+      <div class="hud-cell">
+        <span class="hud-label mono">HI-SCORE</span>
+        <span class="hud-val" id="gameHiscore">0</span>
+      </div>
+      <button class="game-btn" id="gameStartBtn" data-snd="shot">START GAME</button>
+    </div>
+
+    <!-- Canvas -->
+    <canvas id="gameCanvas"></canvas>
+
+    <!-- Overlay screens -->
+    <div class="game-overlay" id="gameOverlay">
+      <div class="go-box">
+        <div class="go-title" id="goTitle">BALL BLASTER</div>
+        <div class="go-sub mono" id="goSub">Destroy all incoming balls before they reach your base</div>
+        <div class="go-score hidden" id="goScore"></div>
+        <button class="go-btn" id="goBtn" data-snd="shot">▶ PLAY</button>
+        <div class="go-hint mono">Move mouse to aim · Click to shoot · Each ball = 10pts</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════ FUN FACTS (full-screen) ═══════════ -->
+<section id="about-me" class="fullscreen">
+  <div class="sec-hd">
+    <span class="mono sec-num">06</span>
+    <h2 class="sec-title">BEYOND THE CODE</h2>
+    <div class="sec-line"></div>
+    <span class="sec-hint mono">HOVER CARDS TO FLIP</span>
+  </div>
+  <div class="facts-grid">
+
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <div class="ff-icon">🏸</div>
+          <div class="ff-label">Sport</div>
+        </div>
+        <div class="flip-back">
+          <div class="fb-title">Badminton Player</div>
+          <p>Competitive badminton is my go-to — it sharpens reflexes and strategy just like debugging production issues.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <div class="ff-icon">📚</div>
+          <div class="ff-label">Reader</div>
+        </div>
+        <div class="flip-back">
+          <div class="fb-title">Avid Reader</div>
+          <p>Books on tech, finance and psychology. Reading gives me mental models I apply directly to system design and problem-solving.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <div class="ff-icon">🎵</div>
+          <div class="ff-label">Music</div>
+        </div>
+        <div class="flip-back">
+          <div class="fb-title">Music Lover</div>
+          <p>Music is my focus fuel. Lo-fi while coding, something upbeat during late-night debugging sessions.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <div class="ff-icon">⚽</div>
+          <div class="ff-label">Football</div>
+        </div>
+        <div class="flip-back">
+          <div class="fb-title">Football Fan</div>
+          <p>Passionate football fan. Team coordination on the pitch mirrors how I think about microservices and distributed systems.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <div class="ff-icon">🇫🇷</div>
+          <div class="ff-label">French</div>
+        </div>
+        <div class="flip-back">
+          <div class="fb-title">Learning French</div>
+          <p>Picking up French as a third language. Learning new languages — human or programming — exercises the same mental muscle.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <div class="ff-icon">💡</div>
+          <div class="ff-label">Philosophy</div>
+        </div>
+        <div class="flip-back">
+          <div class="fb-title">Clean Code First</div>
+          <p>I believe clean architecture is an art form. Code that reads like prose and scales like infrastructure is the goal.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <div class="ff-icon">🔐</div>
+          <div class="ff-label">Security</div>
+        </div>
+        <div class="flip-back">
+          <div class="fb-title">Cyber Security</div>
+          <p>Worked at India's Cyber Coordination Centre detecting fraud at scale. Security-first thinking is baked into everything I build.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <div class="ff-icon">📈</div>
+          <div class="ff-label">FinTech</div>
+        </div>
+        <div class="flip-back">
+          <div class="fb-title">FinTech Honours</div>
+          <p>Pursuing an Honours specialisation in Financial Technology — bridging backend engineering with the world of finance and payments.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════ EXPERIENCE (full-screen) ═══════════ -->
+<section id="experience" class="fullscreen">
+  <div class="sec-hd">
+    <span class="mono sec-num">07</span>
+    <h2 class="sec-title">INTERNSHIP LOG</h2>
+    <div class="sec-line"></div>
+  </div>
+  <div class="exp-layout">
+    <div class="exp-card">
+      <div class="ec-hd">
+        <div class="mono ec-badge">SDE INTERN</div>
+        <div class="ec-meta">
+          <span class="ec-co">Indian Cyber Coordination Centre (I4C)</span>
+          <span class="mono ec-per">Jun 2025 — Jul 2025 · New Delhi</span>
+        </div>
+      </div>
+      <div class="ec-points">
+        <div class="ep"><span class="acc">▸</span>Optimized MySQL database queries using indexing techniques for measurable performance gains</div>
+        <div class="ep"><span class="acc">▸</span>Assisted senior developers in designing new features based on customer feedback loops</div>
+        <div class="ep"><span class="acc">▸</span>Maintained complete project documentation across the full development lifecycle</div>
+        <div class="ep"><span class="acc">▸</span>Managed version control workflows using Git across multiple concurrent projects</div>
+        <div class="ep"><span class="acc">▸</span>Built UI components using HTML, CSS and JavaScript</div>
+        <div class="ep"><span class="acc">▸</span>Tested Cyber Fraud Detection Models and actively filtered content at scale</div>
+      </div>
+      <div class="ec-tech"><span>MySQL</span><span>Git</span><span>HTML/CSS/JS</span><span>Fraud Detection</span><span>Documentation</span></div>
+    </div>
+    <div class="certs-col">
+      <div class="mono certs-hd">// CERTS UNLOCKED</div>
+      <div class="cert-list">
+        <div class="cert-row" data-snd="beep"><span class="ci">☕</span><div><span class="cn">Java FullStack</span><span class="mono cs2">Telusko</span></div><span class="acc">✓</span></div>
+        <div class="cert-row" data-snd="beep"><span class="ci">⚡</span><div><span class="cn">C++ Programming</span><span class="mono cs2">Coding Minutes</span></div><span class="acc">✓</span></div>
+        <div class="cert-row" data-snd="beep"><span class="ci">🧮</span><div><span class="cn">DSA Essentials</span><span class="mono cs2">Coding Minutes</span></div><span class="acc">✓</span></div>
+        <div class="cert-row" data-snd="beep"><span class="ci">🐙</span><div><span class="cn">Git &amp; GitHub</span><span class="mono cs2">Colt Steele</span></div><span class="acc">✓</span></div>
+        <div class="cert-row" data-snd="beep"><span class="ci">🌐</span><div><span class="cn">JavaVerse Workshop</span><span class="mono cs2">GeeksForGeeks</span></div><span class="acc">✓</span></div>
+      </div>
+      <div class="edu-panel">
+        <div class="mono edu-hd">// EDUCATION</div>
+        <div class="edu-row"><span class="acc mono">▸</span><div><b>B.Tech Computer Science</b><br/><span class="mono" style="font-size:.7rem;color:var(--text3)">SRMIST · 2024→ · GPA 9.05</span></div></div>
+        <div class="edu-row"><span class="acc mono">▸</span><div><b>Hons. Financial Technology</b><br/><span class="mono" style="font-size:.7rem;color:var(--text3)">SRMIST · 2026→</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CONTACT (full-screen) ═══════════ -->
+<section id="contact" class="fullscreen">
+  <div class="sec-hd">
+    <span class="mono sec-num">08</span>
+    <h2 class="sec-title">OPEN CHANNEL</h2>
+    <div class="sec-line"></div>
+  </div>
+
+  <p class="contact-tagline">Currently based in <strong>New Delhi</strong> — open to internships, collabs and full-time roles. I respond to every message within 24 hours.</p>
+
+  <div class="contact-cards">
+    <a href="mailto:pranavarora.in@gmail.com" class="contact-card" data-snd="shot">
+      <div class="cc-glow"></div>
+      <div class="cc-icon">✉</div>
+      <div class="cc-label mono">EMAIL</div>
+      <div class="cc-value">pranavarora.in@gmail.com</div>
+      <div class="cc-action mono">CLICK TO OPEN ↗</div>
+    </a>
+    <a href="https://linkedin.com/in/pranavarora17" target="_blank" class="contact-card" data-snd="shot">
+      <div class="cc-glow"></div>
+      <div class="cc-icon">in</div>
+      <div class="cc-label mono">LINKEDIN</div>
+      <div class="cc-value">linkedin.com/in/pranavarora17</div>
+      <div class="cc-action mono">VIEW PROFILE ↗</div>
+    </a>
+    <a href="https://github.com/pranavarora17" target="_blank" class="contact-card" data-snd="shot">
+      <div class="cc-glow"></div>
+      <div class="cc-icon">⌥</div>
+      <div class="cc-label mono">GITHUB</div>
+      <div class="cc-value">github.com/pranavarora17</div>
+      <div class="cc-action mono">VIEW REPOS ↗</div>
+    </a>
+  </div>
+
+  <div class="contact-status-grid">
+    <div class="csg-item fade-in">
+      <span class="csg-k mono">STATUS</span>
+      <span class="csg-v acc">● AVAILABLE FOR HIRE</span>
+    </div>
+    <div class="csg-item fade-in">
+      <span class="csg-k mono">LOCATION</span>
+      <span class="csg-v">New Delhi / Remote</span>
+    </div>
+    <div class="csg-item fade-in">
+      <span class="csg-k mono">OPEN TO</span>
+      <span class="csg-v">Internships · Collabs · Full-time</span>
+    </div>
+    <div class="csg-item fade-in">
+      <span class="csg-k mono">RESPONSE TIME</span>
+      <span class="csg-v acc">Within 24 hours</span>
+    </div>
+    <div class="csg-item fade-in">
+      <span class="csg-k mono">INTERESTS</span>
+      <span class="csg-v">🏸 Badminton · 🎵 Music · ⚽ Football · 📚 Books</span>
+    </div>
+    <div class="csg-item fade-in">
+      <span class="csg-k mono">LANGUAGES</span>
+      <span class="csg-v">English · Hindi · French</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot">
+    <span class="mono" style="color:#888">© 2026 Pranav Arora · Backend Developer</span>
+    <span class="mono" style="color:#bbb">SRMIST · New Delhi / Remote</span>
+    <div class="flinks">
+      <a href="https://github.com/pranavarora17" target="_blank" data-snd="click">GitHub</a>
+      <a href="https://linkedin.com/in/pranavarora17" target="_blank" data-snd="click">LinkedIn</a>
+      <a href="mailto:pranavarora.in@gmail.com" data-snd="click">Email</a>
+    </div>
+  </div>
+</footer>
+
+<!-- PARTICLE BURST -->
+<div id="particleBurst"></div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
